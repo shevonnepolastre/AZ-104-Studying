@@ -24,4 +24,4 @@ I thought Microsoft only gave a 30-day soft delete.  For instance, if you accide
 
 ## Tenant Creation 
 
-Tenant creation was easy, BUT selecting the type of tenant.  
+TBD
