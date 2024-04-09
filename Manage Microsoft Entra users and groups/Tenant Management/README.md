@@ -24,4 +24,6 @@ I thought Microsoft only gave a 30-day soft delete.  For instance, if you accide
 
 ## Tenant Creation 
 
-TBD
+In the end, I kept my existing tenant. Y'know why? It's because you need a license to use Entra ID. If you don't, choose Entra ID (B2C).  I'm going to get a P2 license in the future so I can explore the additional features.  I am thinking that the future might come sooner rather than later.  
+
+
