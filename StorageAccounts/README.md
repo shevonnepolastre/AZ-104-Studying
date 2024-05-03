@@ -25,6 +25,12 @@ The only update I had to make was changing the tier from "Hot" to "Cold."
 
 <img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini_Proj_1_Simple_Storage_Account_Powershell.png">
 
+Before moving on to the next project, I deleted the two storage accounts.  I did one using the portal, and the other using Powershell.
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini_Proj_1_Simple_Storage_Account_Delete_Portal.png">
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini_Proj_1_Simple_Storage_Account_Delete_Powershell.png">
+
 ### Mini Project 2 - Provide storage for the public website
 
 ### Mini Project 3 - Provide private storage for internal company documents
