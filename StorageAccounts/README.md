@@ -14,7 +14,7 @@ This write-up (while I work on the projects) will be about those efforts.  Then 
 
 I also made it Locally-redundant storage (LRS) and cool being that summary indicated that the data is not important. 
 
-I created two storage accounts: one in the portal and the other using PowerShell trying to learn scripting so why not?) Super simple and it was created faster than the one in the portal
+I created two storage accounts: one in the portal and the other using PowerShell (<a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell">Storage Account Powershell Commands</a>) trying to learn scripting so why not?) Super simple and it was created faster than the one in the portal
    
       $resourceGroup = "storage_account_rz_grp"
       $location = "East US 2"
