@@ -2,14 +2,15 @@ Microsoft Learn is a great resource for learning Azure.  It's obvious they focus
 
 This write-up (while I work on the projects) will be about those efforts.  Then I'll work on the file-sharing system, which will be in its own folder.
 
-#Table of Contents
+## Table of Contents
+
   - [Mini Project 1 - Provide storage for the IT department testing and training](#mini-project-1---provide-storage-for-the-it-department-testing-and-training)
   - [Mini Project 2 - Provide storage for the public website](#mini-project-2---provide-storage-for-the-public-website)
   - [Mini Project 3 - Provide private storage for internal company documents](#mini-project-3---provide-private-storage-for-internal-company-documents)
   - [Mini Project 4 - Provide shared file storage for the company offices](#mini-project-4---provide-shared-file-storage-for-the-company-offices)
   - [Mini Project 5 - Provide storage for a new company app](#mini-project-5---provide-storage-for-a-new-company-app)
 
-## Guided Projects - Azure Files and Azure Blobs 
+# Guided Projects - Azure Files and Azure Blobs 
 
 
 ### Mini Project 1 - Provide storage for the IT department testing and training
