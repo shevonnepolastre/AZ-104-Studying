@@ -42,6 +42,58 @@ Before moving on to the next project, I deleted the two storage accounts.  I did
 
 ### Mini Project 2 - Provide storage for the public website
 
+To complete this project, you'll need a high availability storage account, anonymous access, and blobs.  To make a storage account high availability, you have to change the redundancy. Our first project only used local-redudant storage (LRS), which only keeps three copies in the same region.  High availability requires zone-redundant storage (ZRS).  Microsoft even explains each redundancy option so you can pick the right one. 
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini%20Project%202/Mini_Proj_2_HA_Storage_Account_Redundancy.png" width="600">
+
+The Security area is where you will want to indicate anonymous access is allowed. 
+
+Creating a blob container is easy, but of course I want to challenge myself so wanted to create one using Powershell as well.  What a challenge?! Some of the instructions were wrong.  
+
+First, I want to use Visual Studio Code. I had no problems using it on my Windows laptop, but my personal laptop is a Mac, and that was much difficult. 
+
+Went to the Visual Studio Code extensions and installed Powershell and the Azure packages that were bundled up.  However, that still didn't do the entire trick.  I was getting a JSON error.  I had to go to my Terminal app and install Powershell. There are a few ways to do it, but I decided to install the package, and then run this command to get it to 100% install.  
+
+    sudo installer -pkg ./Downloads/powershell-7.4.2-osx-x64.pkg -target /
+
+I was then able to connect to my account 
+
+    Connect-AzAccount 
+
+I tried using the <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-powershell">these instructions</a> and using this command:
+
+    # Create a context object using Azure AD credentials
+     $ctx = New-AzStorageContext -StorageAccountName <storage account name> -UseConnectedAccount
+
+Started getting errors, so I realized that wasn't going to cut it. 
+
+Tried this other command, and I kept getting "The client 'f774a339-7628-49ff-9829-49c522b6d49c' with object id 'f774a339-7628-49ff-9829-49c522b6d49c' does not have the authorization to perform action 'Microsoft.Resources/subscriptions/resourceGroups/read' over scope '/subscriptions/3535caf0-dd76-4e49-8666-cdbb6f15aa55'"
+
+Decided to use ChatGPT to see what it came up with, and it worked BUT was still getting the error so I searched online and someone indicated that you might have to actually select the subscription using
+
+    "Connect-AzAccount" go to "Select-AzSubscription -SubscriptionName 'X'
+
+Did that, and it worked! 
+
+    # Variables
+    $resourceGroupName = “storage_account_rz_grp”
+    $storageAccountName = “storageaccounthrdept”
+    $containerName = “blogpowershell”
+
+
+    # Get storage account context
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    $storageContext = $storageAccount.Context
+
+    # Create new blob container
+    New-AzStorageContainer -Name $containerName -Context $storageContext -Permission Off
+
+ONLY thing I set manually was the anonymous access.  
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini%20Project%202/Mini_Proj_2_HA_Storage_BlobPSSuccess.png">
+
+
+
 ### Mini Project 3 - Provide private storage for internal company documents
 
 ### Mini Project 4 - Provide shared file storage for the company offices
