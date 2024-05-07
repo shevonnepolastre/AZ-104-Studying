@@ -128,4 +128,28 @@ I found this answer while searching: "Azure Backup and Azure replication are bot
 
 ### Mini Project 4 - Provide shared file storage for the company offices
 
+The requirements are: 
+
+1. Create a storage account.
+
+2. Configure a file share and directory.
+
+3. Configure snapshots and practice restoring files.
+
+4. Restrict access to a specific virtual network and subnet.
+
+Went ahead and used Powershell to create the storage account with success.  Creating the file share in the portal was easy.  I then tried to do it in Powershell but decided CLI was easier. 
+
+    $resourceGroupName = "storage_account_rz_grp"
+
+    $storageAcct = "storageaccountitdept2”
+    
+    $shareName = "myshare"
+
+    az storage share-rm create --resource-group $resourceGroupName --storage-account $storageAcct --name $shareName --quota 1024 --enabled-protocols SMB --output none
+
+For the snapshot, I went to Lifecycle Management and chose snapshots for 15 days and then it moves to a Cool tier. 
+
+For the last requirement, I went to Networking and was able to restrict it to a VNet and Subnet I created. 
+
 ### Mini Project 5 - Provide storage for a new company app
