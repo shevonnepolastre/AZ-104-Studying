@@ -148,7 +148,7 @@ Went ahead and used Powershell to create the storage account with success.  Crea
 
     az storage share-rm create --resource-group $resourceGroupName --storage-account $storageAcct --name $shareName --quota 1024 --enabled-protocols SMB --output none
 
-For the snapshot, I went to Lifecycle Management and chose snapshots for 15 days and then it moves to a Cool tier. 
+For the snapshot, I went to Lifecycle Management and chose snapshots for 15 days and then it moves to a Cool tier. However, the solution indicated that the File Share had its own snapshots.  When I went, I am able to create a manual one but not automated. 
 
 For the last requirement, I went to Networking and was able to restrict it to a VNet and Subnet I created. 
 
