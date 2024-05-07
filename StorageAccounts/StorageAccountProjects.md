@@ -96,6 +96,36 @@ ONLY thing I set manually was the anonymous access.
 
 ### Mini Project 3 - Provide private storage for internal company documents
 
+Requirements were:
+
+1. The company needs a storage account for its private documents.
+
+2. Adding redundancy to your storage account.
+
+3. Setting up a shared access signature so partners can access a file.
+
+4. Keeping the storage on the public website backed up.
+
+5. Moving content to cool tiers with lifecycle management.
+
+In light of this, I went ahead and deleted the storage account I used for my first two projects and made a new one.  I could have created a private endpoint, but I will save that when I get to VNets.  
+
+When I created the storage account, I had to create a Shared Access Signature (SAS).  I did this pretty easily. In your storage account, you append it to the link for a file and the person can access it.  The downside is that it comes with some risks, so I might get fancier and use Entra ID.  
+
+I made the redundancy to ZRS because the requirements required high availability.  When I tried to upgrade to GZRS, I got an error.  GRS was grayed out. 
+
+Lifecycle management was easy, and I made a rule that moved data to a cool tier after 15 days.  
+
+The backup part stumped me.  My head was spinning, and I didn't want to look at the solution yet. 
+
+After staring at the options for a while, I decided to check out Data Protection, and there it was (or so I thought).  I created a backup vault and policy, but then I got an error about object replication.  
+
+After seeing that, I clicked on Object Replication.  Added a second storage account and blob container, and created a rule to backup from one to the other.  I looked at the solution and that was the way to go.  However, what was Azure Backup?
+
+I found this answer while searching: "Azure Backup and Azure replication are both Azure storage options that maintain copies of data. Azure Backup can restore deleted or corrupted data, while Azure replication maintains multiple copies of data."
+
+
+
 ### Mini Project 4 - Provide shared file storage for the company offices
 
 ### Mini Project 5 - Provide storage for a new company app
