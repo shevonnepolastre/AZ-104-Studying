@@ -153,3 +153,43 @@ For the snapshot, I went to Lifecycle Management and chose snapshots for 15 days
 For the last requirement, I went to Networking and was able to restrict it to a VNet and Subnet I created. 
 
 ### Mini Project 5 - Provide storage for a new company app
+
+The requirements are: 
+
+1. Create the storage account and managed identity.
+2. Secure access to the storage account with a key vault and key.
+3. Configure the storage account to use the customer managed key in the key vault
+4. Configure an time-based retention policy and an encryption scope.
+
+After the storage account was created, I went to Encryption on the sidebar, and changed it from "Microsoft managed keys" to "Customer managed keys" 
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini%20Project%205/storage_account_customer%20managed%20keys.png">
+
+Creating the Key Vault was super easy, but then you have to remember that Zero Trust is a huge thing so that means the Key Vault doesn't automatically have access to the storage account.  I found this CLI command:
+ 
+    az role assignment create --role "Storage Account Key Operator Service Role" --assignee "https://vault.azure.net" --scope "/subscriptions/2469c19e-4e43-431b-978a-   
+    87dfe97a37fb/resourceGroups/storage_account_rz_grp/providers/Microsoft.Storage/storageAccounts/stoaccount4thewin"\
+
+You will see it under the Storage Accounts IAM
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini%20Project%205/storage_account_keyvaultacess.png">
+
+HOWEVER, that didn't work.  I kept getting the error "The operation is not allowed by RBAC. If role assignments were recently changed, please wait several minutes for role assignments to become effective."
+
+I was right that you do have to assign permissions BUT to the Key Vault, so I added the Key Vault Administrator role to myself and it worked.
+
+<img src="https://github.com/shevonnepolastre/AZ-104-Studying/blob/main/StorageAccounts/Mini%20Project%205/storage_account_key%20vault%20creation.png">
+
+The requirements also indicated that a Managed Identity needed to be tied to the storage account, so I went to Managed Identity and created one.
+
+I made sure to apply the Key Vault Admnistrator to the Managed Identity and success! 
+
+## Lessons Learned
+
+As with anything, not everything was easy, and I'm glad because it made me learn. 
+
+1. You have to apply permissions to everything in Azure.  Kind of heard my coworker say that yesterday when we were talking about Zero Trust and it made things much easier to understand.
+2. Learning Powershell and CLI will make your life much easier
+3. Find different ways of doing things and do not give up
+4. Tons of resources out there to help you when you are troubleshooting
+5. Keep practicing as with anything in life 
