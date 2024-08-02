@@ -1,4 +1,4 @@
-Whenever you have trouble deciding what projects to help you gain Azure experience, Microsoft offers exceptional labs and demos that you can use. For learning about virtual machines, I used the one that I am linking here.  Additionally, I decided to create a virtual machine image that wasn't available in the labs, but I saw on a Udemy course that I am taking. 
+Whenever you have trouble deciding what projects to help you gain Azure experience, Microsoft offers exceptional labs and demos that you can use. For learning about virtual machines, I used the one that I am <a href="https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/blob/master/Instructions/Labs/LAB_08-Manage_Virtual_Machines.md">linking here</a>.  Additionally, I decided to create a virtual machine image that wasn't available in the labs, but I saw on a Udemy course that I am taking. 
 
 As a result, I updated the PowerShell code I initially wrote.  One thing to know is that you can always improve upon your code.  I made a few updates, particularly to the Network Security group. I optimized the code to ensure its ease of use without any warnings or errors during compilation. Below is the code detailing the virtual machine PowerShell changes I made:
 
@@ -82,3 +82,6 @@ As a result, I updated the PowerShell code I initially wrote.  One thing to know
 
     #Now the pieces fall into place to create the VM
     New-AzVm -ResourceGroupName $resourceGroup -Name 'devVM4Learn' -Location $location -Image         'MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest' -VirtualNetworkName $vnet -SubnetName $subnet -    SecurityGroupName $nsg -PublicIpAddressName $ip -OpenPorts 80,3389
+
+
+You're probably going to take a 2-4 of days to work on this project especially if you have other commitments like work, school, kids, hobbies, etc.  Therefore, make sure that you STOP YOUR VM(s).  I learned that the hard way.   You do not want to log on and have a huge cost to pay.
