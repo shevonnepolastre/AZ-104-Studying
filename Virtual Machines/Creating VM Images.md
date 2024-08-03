@@ -85,3 +85,13 @@ As a result, I updated the PowerShell code I initially wrote.  One thing to know
 
 
 You're probably going to take a 2-4 of days to work on this project especially if you have other commitments like work, school, kids, hobbies, etc.  Therefore, make sure that you STOP YOUR VM(s).  I learned that the hard way.   You do not want to log on and have a huge cost to pay.
+
+With Azure's bicep, you can push Infrastructure as Code (IaC), so it's good to know how to use it.  It's more user-friendly than Powershell, but you still need to use CLI or PowerShell to actually deploy the files, just like with ARM Templates.  
+
+Microsoft gets you started with a <a  href="https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-bicep?tabs=PowerShell">template</a> that's already ready to go. I got stuck on the fact that even though visual studio code shows that I installed the Bicep extension, I didn't actually install Bicep. It took me searching for this error to figure it out:
+
+        New-AzResourceGroupDeployment: Cannot retrieve the dynamic parameters for the cmdlet
+
+I then installed Bicep.  Eventually I got past this error, but the deployment still didn't work.  Based on what I read about the bicep syntax, and what I saw in ChatGPT, I hadn't defined the username and password.  I made sure to do that, and it worked! Besides the VNet, SubNet, etc, it also deployed the other resources. 
+
+Though I still need to learn Powershell and CLI, I like bicep.
